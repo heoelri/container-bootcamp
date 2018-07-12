@@ -124,7 +124,7 @@ Now that the connections are established, we will manually map the existing Azur
 3. Navigate to the **Releases** section under the **Build & Release** menu, click on **MyHealth.AKS** release definition. **Edit** the release definition **MyHealth.AKS.Release** and select **Tasks**.
 
    ![release](img/release.png)
-
+  
    ![releasetasks](img/releasetasks.png)
 
 4. In the **Dev** environment, under the **DB deployment** phase, update the **Azure Subscription** value from the dropdown for **Execute Azure SQL: DacpacTask** task.
@@ -160,7 +160,10 @@ We will update the database connection string for the .NET Core application and 
 
 2. Navigate to the `AKS` path to **edit** the file `mhc-aks.yaml`. This YAML manifest file contains configuration details of **deployments**,**services** and **pods** which will be deployed in Kubernetes.
 
-   Scroll to the line number **93**. modify the value **YOUR_ACR** with your **ACR Login server** which was noted earlier while setting up the environment. Also **add the ImagePullSecrets under spec section. Provide the secret key as mysecretkey** as seen below 
+   Scroll to the line number **93**. modify the value **YOUR_ACR** with your **ACR Login server** which was noted earlier while setting up the environment. Also add the **ImagePullSecrets** under spec section and **- name:** with the Containers Register password. 
+   
+   >You can find the password in the Container Registry - Access Keys - Password 
+         
 Click on the **Commit** button.
 
    ![editmhcaks](img/editmhcaks.png)
