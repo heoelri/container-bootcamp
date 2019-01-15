@@ -1,7 +1,9 @@
 # Azure Kubernetes Service (AKS) Deployment
 ## Create AKS cluster
 
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Perform these steps in the AZURE CLOUD SHELL**
+![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Perform these steps in the JUMPBOX or AZURE CLOUD SHELL**
+! Azure-cli version 2.0.54 or later is required in the Jumpbox
+
 
 1. In your Cloud Shell session, make sure that you're using the right Azure subscription
 
