@@ -3,6 +3,10 @@
 
 ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Perform these steps in the Jumpbox**
 
+0. Execute the following command to update the AZURE CLI in the jump box 
+    ```
+    sudo yum update azure-cli
+    ```   
 1. In the ssh session login to the Azure subscription
     ```
     az login
