@@ -14,6 +14,12 @@ The labs are based upon a node.js application that allows for voting on the Just
 
 ## Labs
 
+### Day 0 - Course Pre-Work
+
+  0. [Welcome to Microsoft and Open Source](prework/readme/00-welcome.md)
+  1. [Run app locally to test components](labs/day1-labs/01-setup-app-local.md)
+  2. [Create Docker images for apps and push to Azure Container Registry](labs/day1-labs/02-dockerize-apps.md)
+
 ### Day 1 - Introduction and Presentations
 
   0. [Setup Lab environment](labs/day1-labs/00-lab-environment.md)
