@@ -4,6 +4,7 @@ _YAML Ain't Markup Language​_
 
 > [Latest YAML Specification](https://yaml.org/spec/1.2/spec.html)
 
+> [YAML Reference Card](https://yaml.org/refcard.html)
 
 ## What is YAML?
 
