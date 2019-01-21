@@ -2,15 +2,13 @@
 
 _YAML Ain't Markup Language​_
 
-_YAML is a human friendly data serialization standard for all programming languages_
-
 > [Latest YAML Specification](https://yaml.org/spec/1.2/spec.html)
 
 > [YANML Reference Card](https://yaml.org/refcard.html)
 
 ## What is YAML?
 
-YAML, which stands for Yet Another Markup Language, or YAML Ain’t Markup Language (depending who you ask) is a human-readable text-based format for specifying configuration-type information
+YAML, which stands for Yet Another Markup Language, or YAML Ain’t Markup Language is a human-readable text-based format for specifying configuration-type information
 
 ### History and name
 
@@ -28,21 +26,21 @@ YAML is a superset of JSON, which means that any valid JSON file is also a valid
 
 There are only two types of structures you need to know about in YAML:
 
-    * Lists
-    * Maps
+* Lists
+* Maps
 
 in YAML, you indent with spaces, not tabs, in addition, there MUST be spaces between element parts.
 
 
 For example, this is correct:
 
-	`Key: Value`
+	Key: Value
 
 but this will fail:
 
-	`Key:Value`
+	Key:Value
 
-		> no space after the colon!
+<span style="color:red"> ^^ no space after the colon!</span>
 
 
 YAML Maps
@@ -55,3 +53,9 @@ For example, you might have a config file that starts like this:
 apiVersion: v1
 kind: Pod
 ```
+
+The first line is a separator, and is optional unless you’re trying to define multiple structures in a single file. 
+
+
+We have two values, v1 and Pod, mapped to two keys, apiVersion and kind.
+

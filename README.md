@@ -17,8 +17,8 @@ The labs are based upon a node.js application that allows for voting on the Just
 ### Day 0 - BootCamp Pre-Work
 
   0. [Welcome to Microsoft and Open Source](prework/readme/welcome.md)
-  1. [Introduction to Linux](prework/readme/introlinux.md)
-  2. [Introduction to the Linux Console](prework/readme/introtoconsole.md)
+  1. Introduction to Linux (Coming Soon)
+  2. Introduction to the Linux Console (Coming Soon)
   3. [Introduction to YAML](prework/readme/introtoyaml.md)
  
 
