@@ -2,6 +2,15 @@
 
 _Introduction to Microsoft's Open-Source Story​_
 
+
+# Table of Contents
+
+1. [Overview](#overview)
+2. [Microsoft Open Source WebSite](#Open-Source-Website)
+3. [Microsoft's Public Repositories](#Microsoft's-Public-Repositories)
+4. [Relevent Articles](#Relevent-Articles)
+5. [Microsoft Open Source Stories](#Open-Source-Stories)
+
 ## Overview
 
 One of the best ways to describe the journey for Microsoft comes from a community memo by Jim Zemlin, Executive Director of the Linux Foundation.
