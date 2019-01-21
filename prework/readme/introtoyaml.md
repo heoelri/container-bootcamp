@@ -6,6 +6,7 @@ _YAML is a human friendly data serialization standard for all programming langua
 
 > [Latest YAML Specification](https://yaml.org/spec/1.2/spec.html)
 
+> [YANML Reference Card](https://yaml.org/refcard.html)
 
 ## What is YAML?
 
@@ -23,3 +24,34 @@ was then repurposed as YAML Ain't Markup Language, a recursive acronym, to disti
 
 YAML is a superset of JSON, which means that any valid JSON file is also a valid YAML file. 
 
+### YAML Structure
+
+There are only two types of structures you need to know about in YAML:
+
+    * Lists
+    * Maps
+
+in YAML, you indent with spaces, not tabs, in addition, there MUST be spaces between element parts.
+
+
+For example, this is correct:
+
+	`Key: Value`
+
+but this will fail:
+
+	`Key:Value`
+
+		> no space after the colon!
+
+
+YAML Maps
+
+Maps let you associate name-value pairs.  
+
+For example, you might have a config file that starts like this:
+
+```YAML
+apiVersion: v1
+kind: Pod
+```
