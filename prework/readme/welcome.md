@@ -13,7 +13,7 @@ _Introduction to Microsoft's Open-Source Story​_
 
 ## Overview
 
-One of the best ways to describe the journey for Microsoft comes from a community memo by Jim Zemlin, Executive Director of the Linux Foundation.
+One of the ways to describe the journey for Microsoft comes from a community memo by Jim Zemlin, Executive Director of the Linux Foundation.
 Below is an exact copy of that memo with a link to the original:
 
 ****Microsoft Buys GitHub: The Linux Foundation’s Reaction****
