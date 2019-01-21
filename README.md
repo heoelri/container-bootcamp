@@ -14,11 +14,13 @@ The labs are based upon a node.js application that allows for voting on the Just
 
 ## Labs
 
-### Day 0 - Course Pre-Work
+### Day 0 - BootCamp Pre-Work
 
-  0. [Welcome to Microsoft and Open Source](prework/readme/00-welcome.md)
-  1. [Run app locally to test components](labs/day1-labs/01-setup-app-local.md)
-  2. [Create Docker images for apps and push to Azure Container Registry](labs/day1-labs/02-dockerize-apps.md)
+  0. [Welcome to Microsoft and Open Source](prework/readme/welcome.md)
+  1. [Introduction to Linux](prework/readme/introlinux.md)
+  2. [Introduction to the Linux Console](prework/readme/introtoconsole.md)
+  3. [Introduction to YAML](prework/readme/introtoyaml.md)
+ 
 
 ### Day 1 - Introduction and Presentations
 
