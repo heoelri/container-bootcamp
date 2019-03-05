@@ -16,7 +16,7 @@ For the first container, we will be creating a Dockerfile from scratch. For the 
 
     * Add the following lines and save:
 
-        ```
+        ```txt
         FROM node:9.4.0-alpine
 
         ARG VCS_REF
@@ -40,21 +40,23 @@ For the first container, we will be creating a Dockerfile from scratch. For the 
 
 2. Create a container image for the node.js Web app
 
-    From the terminal session: 
+    From the terminal session:
 
-    ```
+    ```bash
     cd ~/blackbelt-aks-hackfest/app/web
-    
-    docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` --build-arg VCS_REF=`git rev-parse --short HEAD` --build-arg IMAGE_TAG_REF=v1 -t rating-web .
+
+    sudo docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` --build-arg VCS_REF=`git rev-parse --short HEAD` --build-arg IMAGE_TAG_REF=v1 -t rating-web .
     ```
+
     **You can ignore the NPM warnings generated while the image is being built.**
 
    **If you have an error regarding "Unable to evaluate symlinks, No such file or directory". Ensure the file name is correct including case-sensitivity**
 
 3. Once the above command is completed, validate that the image was created with command: `docker images`
-   ```
-   docker images
-   
+
+   ```bash
+   sudo docker images
+
    REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
    rating-web               latest              259aa85bc386        31 minutes ago      212MB
    ```
@@ -65,17 +67,17 @@ In this step, the Dockerfile has been created for you.
 
 1. Create a container image for the node.js API app
 
-    ```
+    ```bash
     cd ~/blackbelt-aks-hackfest/app/api
 
-    docker build -t rating-api .
+    sudo docker build -t rating-api .
     ```
 
 2. Validate image was created with `docker images`
 
-    ```
+    ```bash
     sudo docker images
-    
+
     REPOSITORY          TAG               IMAGE ID            CREATED             SIZE
     rating-api          latest            eb53c9e08676        13 seconds ago      84.8 MB
     ```
@@ -84,17 +86,17 @@ In this step, the Dockerfile has been created for you.
 
 1. Create a MongoDB image with data files
 
-    ```
+    ```bash
     cd ~/blackbelt-aks-hackfest/app/db
 
-    docker build -t rating-db .
+    sudo docker build -t rating-db .
     ```
 
 2. Validate image was created with `docker images`
 
-    ```
+    ```bash
     sudo docker images
-    
+
     REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
     rating-db           latest              d099239ef16f        15 seconds ago      366 MB
     ```
@@ -103,49 +105,49 @@ In this step, the Dockerfile has been created for you.
 
 ### Setup Docker Network
 
-Create a docker bridge network to allow the containers to communicate internally. 
+Create a docker bridge network to allow the containers to communicate internally.
 
-```
-docker network create --subnet=172.18.0.0/16 my-network
+```bash
+sudo docker network create --subnet=172.18.0.0/16 my-network
 ```
 
-### MongoDB Container
+### Setup MongoDB Container
 
 1. Run mongo container
 
-    ```
-    docker run -d --name db --net my-network --ip 172.18.0.10 -p 27017:27017 rating-db
+    ```bash
+    sudo docker run -d --name db --net my-network --ip 172.18.0.10 -p 27017:27017 rating-db
     ```
 
 2. Validate by running `docker ps -a`
 
 3. Import data into database
 
-    ```
-    docker exec -it db bash
+    ```bash
+    sudo docker exec -it db bash
     ```
 
     You will have a prompt inside the mongo container. From that prompt, run the import script (`./import.sh`)
 
-    ```
+    ```bash
     root@61f9894538d0:/# ./import.sh
-    
-    2018-01-10T19:26:07.746+0000	connected to: localhost
-    2018-01-10T19:26:07.761+0000	imported 4 documents
-    2018-01-10T19:26:07.776+0000	connected to: localhost
-    2018-01-10T19:26:07.787+0000	imported 72 documents
-    2018-01-10T19:26:07.746+0000	connected to: localhost
-    2018-01-10T19:26:07.761+0000	imported 2 documents
+
+    2018-01-10T19:26:07.746+0000    connected to: localhost
+    2018-01-10T19:26:07.761+0000    imported 4 documents
+    2018-01-10T19:26:07.776+0000    connected to: localhost
+    2018-01-10T19:26:07.787+0000    imported 72 documents
+    2018-01-10T19:26:07.746+0000    connected to: localhost
+    2018-01-10T19:26:07.761+0000    imported 2 documents
     ```
 
 4. Type `exit` to exit out of container
 
-### API Container
+### Setup API Container
 
 1. Run api app container
 
-    ```
-    docker run -d --name api -e "MONGODB_URI=mongodb://172.18.0.10:27017/webratings" --net my-network --ip 172.18.0.11 -p 3000:3000 rating-api
+    ```bash
+    sudo docker run -d --name api -e "MONGODB_URI=mongodb://172.18.0.10:27017/webratings" --net my-network --ip 172.18.0.11 -p 3000:3000 rating-api
     ```
 
     > Note that environment variables are used here to direct the api app to mongo.
@@ -153,26 +155,28 @@ docker network create --subnet=172.18.0.0/16 my-network
 2. Validate by running `docker ps -a`
 
 3. Test api app with curl
-    ```
+
+    ```bash
     curl http://localhost:3000/api/heroes
     ```
 
-### Web Container
+### Setup Web Container
 
 1. Run web app container
 
-    ```
-    docker run -d --name web -e "API=http://172.18.0.11:3000/" --net my-network --ip 172.18.0.12 -p 8080:8080 rating-web
+    ```bash
+    sudo docker run -d --name web -e "API=http://172.18.0.11:3000/" --net my-network --ip 172.18.0.12 -p 8080:8080 rating-web
     ```
 
 2. Validate by running `docker ps -a`
 
 3. Test web app
-    
+
     The jumpbox has a Public IP address and port 8080 is open. You can browse your running app with a link such as: http://13.90.246.114:8080 
 
     You can also test via curl
-    ```
+
+    ```bash
     curl http://localhost:8080
     ```
 
@@ -198,28 +202,28 @@ Now that we have container images for our application components, we need to sto
 3. Make note of the "Login server", "Username", and "password"
 4. In the terminal session on the jumpbox, set each value to a variable as shown below
 
-    ```
+    ```txt
     # set these values to yours
     ACR_SERVER=
     ACR_USER=
     ACR_PWD=
 
-    docker login --username $ACR_USER --password $ACR_PWD $ACR_SERVER
+    sudo docker login --username $ACR_USER --password $ACR_PWD $ACR_SERVER
     ```
 
-### Tag images with ACR server and repository 
+### Tag images with ACR server and repository
 
-```
+```bash
 # Be sure to replace the login server value
 
-docker tag rating-db $ACR_SERVER/azureworkshop/rating-db:v1
-docker tag rating-api $ACR_SERVER/azureworkshop/rating-api:v1
-docker tag rating-web $ACR_SERVER/azureworkshop/rating-web:v1
+sudo docker tag rating-db $ACR_SERVER/azureworkshop/rating-db:v1
+sudo docker tag rating-api $ACR_SERVER/azureworkshop/rating-api:v1
+sudo docker tag rating-web $ACR_SERVER/azureworkshop/rating-web:v1
 ```
 
 ### Push images to registry
 
-```
+```bash
 docker push $ACR_SERVER/azureworkshop/rating-db:v1
 docker push $ACR_SERVER/azureworkshop/rating-api:v1
 docker push $ACR_SERVER/azureworkshop/rating-web:v1
@@ -227,7 +231,7 @@ docker push $ACR_SERVER/azureworkshop/rating-web:v1
 
 Output from a successful `docker push` command is similar to:
 
-```
+```bash
 The push refers to a repository [mycontainerregistry.azurecr.io/azureworkshop/rating-db]
 035c23fa7393: Pushed
 9c2d2977a0f4: Pushed
@@ -251,8 +255,6 @@ v1: digest: sha256:f84eba148dfe244f8f8ad0d4ea57ebf82b6ff41f27a903cbb7e3fbe377bb2
 
 ![img](img/02_acr_repositories.png)
 
-2. Click on the Repository name and under 'tags' section, you will see "v1" listed.
+1. Click on the Repository name and under 'tags' section, you will see "v1" listed.
 
-
-
-   ##### [Return to BootCamp Table of Contents (Main Page)](/README.md)
+#### [Return to BootCamp Table of Contents (Main Page)](/README.md)

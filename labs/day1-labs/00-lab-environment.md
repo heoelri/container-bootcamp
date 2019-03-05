@@ -12,24 +12,23 @@ Our labs are build and verified using CentOS7. Our recommendations is to use Cen
     1. Browse to http://portal.azure.com
     2. Click on "Create a resource" and search for "CentOS-based 7.5"
     3. Deploy the CentOS-based 7.5 VM  
-    
+
          Size: D2s_v3 (Please don't use B-series VMs)
-    
+
          Publisher: Rogue Wave Software
-    
-         NSG Rule: Allow inbound on SSH port (22) 
-                  
+
+         NSG Rule: Allow inbound on SSH port (22)
+
          Public IP: Yes
-         
+
          Authentication: Provide a strong password or use public-key authentication(recommended) for your Jumpbox because it's accessible publicly.
-    
-    
+
     4. After the CentOS jumbbox is provisioned in Azure, you can connect to it using SSH (PuTTY or MobaXTerm - or nativly using the "ssh" command in PowerShell)
-    **Verify that Auto-Shutdown has been disabled for this VM** 
+    **Verify that Auto-Shutdown has been disabled for this VM**
     5. Connect to your newly created jumpbox on the Public IP
     6. Goto [**Jumpbox Setup**](/labs/helper-files/jumpbox-setup.md) to install the required software that you'll need for this training.
 
-* **Setup Azure Cloud Shell:** 
+* **Setup Azure Cloud Shell:**
 
     1. Browse to http://portal.azure.com
     2. Login with the Azure credentials
@@ -49,7 +48,5 @@ Our labs are build and verified using CentOS7. Our recommendations is to use Cen
     7. Click `Create storage`
 
     > Note: You can also use the dedicated Azure Cloud Shell URL: http://shell.azure.com 
-    
-    
-    
-   ##### [Return to BootCamp Table of Contents (Main Page)](/README.md)
+
+#### [Return to BootCamp Table of Contents (Main Page)](/README.md)
