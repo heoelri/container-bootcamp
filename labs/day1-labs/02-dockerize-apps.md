@@ -45,7 +45,7 @@ For the first container, we will be creating a Dockerfile from scratch. For the 
     ```bash
     cd ~/blackbelt-aks-hackfest/app/web
 
-    sudo docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` --build-arg VCS_REF=`git rev-parse --short HEAD` --build-arg IMAGE_TAG_REF=v1 -t rating-web .
+    docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` --build-arg VCS_REF=`git rev-parse --short HEAD` --build-arg IMAGE_TAG_REF=v1 -t rating-web .
     ```
 
     **You can ignore the NPM warnings generated while the image is being built.**
@@ -55,7 +55,7 @@ For the first container, we will be creating a Dockerfile from scratch. For the 
 3. Once the above command is completed, validate that the image was created with command: `docker images`
 
    ```bash
-   sudo docker images
+   docker images
 
    REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
    rating-web               latest              259aa85bc386        31 minutes ago      212MB
@@ -70,13 +70,13 @@ In this step, the Dockerfile has been created for you.
     ```bash
     cd ~/blackbelt-aks-hackfest/app/api
 
-    sudo docker build -t rating-api .
+    docker build -t rating-api .
     ```
 
 2. Validate image was created with `docker images`
 
     ```bash
-    sudo docker images
+    docker images
 
     REPOSITORY          TAG               IMAGE ID            CREATED             SIZE
     rating-api          latest            eb53c9e08676        13 seconds ago      84.8 MB
@@ -89,13 +89,13 @@ In this step, the Dockerfile has been created for you.
     ```bash
     cd ~/blackbelt-aks-hackfest/app/db
 
-    sudo docker build -t rating-db .
+    docker build -t rating-db .
     ```
 
 2. Validate image was created with `docker images`
 
     ```bash
-    sudo docker images
+    docker images
 
     REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
     rating-db           latest              d099239ef16f        15 seconds ago      366 MB
@@ -108,7 +108,7 @@ In this step, the Dockerfile has been created for you.
 Create a docker bridge network to allow the containers to communicate internally.
 
 ```bash
-sudo docker network create --subnet=172.18.0.0/16 my-network
+docker network create --subnet=172.18.0.0/16 my-network
 ```
 
 ### Setup MongoDB Container
@@ -116,7 +116,7 @@ sudo docker network create --subnet=172.18.0.0/16 my-network
 1. Run mongo container
 
     ```bash
-    sudo docker run -d --name db --net my-network --ip 172.18.0.10 -p 27017:27017 rating-db
+    docker run -d --name db --net my-network --ip 172.18.0.10 -p 27017:27017 rating-db
     ```
 
 2. Validate by running `docker ps -a`
@@ -124,7 +124,7 @@ sudo docker network create --subnet=172.18.0.0/16 my-network
 3. Import data into database
 
     ```bash
-    sudo docker exec -it db bash
+    docker exec -it db bash
     ```
 
     You will have a prompt inside the mongo container. From that prompt, run the import script (`./import.sh`)
@@ -147,7 +147,7 @@ sudo docker network create --subnet=172.18.0.0/16 my-network
 1. Run api app container
 
     ```bash
-    sudo docker run -d --name api -e "MONGODB_URI=mongodb://172.18.0.10:27017/webratings" --net my-network --ip 172.18.0.11 -p 3000:3000 rating-api
+    docker run -d --name api -e "MONGODB_URI=mongodb://172.18.0.10:27017/webratings" --net my-network --ip 172.18.0.11 -p 3000:3000 rating-api
     ```
 
     > Note that environment variables are used here to direct the api app to mongo.
@@ -165,7 +165,7 @@ sudo docker network create --subnet=172.18.0.0/16 my-network
 1. Run web app container
 
     ```bash
-    sudo docker run -d --name web -e "API=http://172.18.0.11:3000/" --net my-network --ip 172.18.0.12 -p 8080:8080 rating-web
+    docker run -d --name web -e "API=http://172.18.0.11:3000/" --net my-network --ip 172.18.0.12 -p 8080:8080 rating-web
     ```
 
 2. Validate by running `docker ps -a`
@@ -208,7 +208,7 @@ Now that we have container images for our application components, we need to sto
     ACR_USER=
     ACR_PWD=
 
-    sudo docker login --username $ACR_USER --password $ACR_PWD $ACR_SERVER
+    docker login --username $ACR_USER --password $ACR_PWD $ACR_SERVER
     ```
 
 ### Tag images with ACR server and repository
@@ -216,9 +216,9 @@ Now that we have container images for our application components, we need to sto
 ```bash
 # Be sure to replace the login server value
 
-sudo docker tag rating-db $ACR_SERVER/azureworkshop/rating-db:v1
-sudo docker tag rating-api $ACR_SERVER/azureworkshop/rating-api:v1
-sudo docker tag rating-web $ACR_SERVER/azureworkshop/rating-web:v1
+docker tag rating-db $ACR_SERVER/azureworkshop/rating-db:v1
+docker tag rating-api $ACR_SERVER/azureworkshop/rating-api:v1
+docker tag rating-web $ACR_SERVER/azureworkshop/rating-web:v1
 ```
 
 ### Push images to registry
