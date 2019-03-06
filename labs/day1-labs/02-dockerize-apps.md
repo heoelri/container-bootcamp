@@ -70,7 +70,7 @@ In this step, the Dockerfile has been created for you.
     ```bash
     cd ~/container-bootcamp/app/api
 
-    sudo docker build -t rating-api .
+    docker build -t rating-api .
     ```
 
 2. Validate image was created with `docker images`
@@ -89,7 +89,7 @@ In this step, the Dockerfile has been created for you.
     ```bash
     cd ~/container-bootcamp/app/db
 
-    sudo docker build -t rating-db .
+    docker build -t rating-db .
     ```
 
 2. Validate image was created with `docker images`
@@ -108,18 +108,24 @@ In this step, the Dockerfile has been created for you.
 Create a docker bridge network to allow the containers to communicate internally.
 
 ```bash
+docker network create --subnet=172.18.0.0/16 my-network
+```
 
 ### Setup MongoDB Container
 
 1. Run mongo container
 
     ```bash
+    docker run -d --name db --net my-network --ip 172.18.0.10 -p 27017:27017 rating-db
+    ```
 
 2. Validate by running `docker ps -a`
 
 3. Import data into database
 
     ```bash
+    docker exec -it db bash
+    ```
 
     You will have a prompt inside the mongo container. From that prompt, run the import script (`./import.sh`)
 
@@ -202,7 +208,7 @@ Now that we have container images for our application components, we need to sto
     ACR_USER=
     ACR_PWD=
 
-    sudo docker login --username $ACR_USER --password $ACR_PWD $ACR_SERVER
+    docker login --username $ACR_USER --password $ACR_PWD $ACR_SERVER
     ```
 
 ### Tag images with ACR server and repository
@@ -210,9 +216,9 @@ Now that we have container images for our application components, we need to sto
 ```bash
 # Be sure to replace the login server value
 
-sudo docker tag rating-db $ACR_SERVER/azureworkshop/rating-db:v1
-sudo docker tag rating-api $ACR_SERVER/azureworkshop/rating-api:v1
-sudo docker tag rating-web $ACR_SERVER/azureworkshop/rating-web:v1
+docker tag rating-db $ACR_SERVER/azureworkshop/rating-db:v1
+docker tag rating-api $ACR_SERVER/azureworkshop/rating-api:v1
+docker tag rating-web $ACR_SERVER/azureworkshop/rating-web:v1
 ```
 
 ### Push images to registry
