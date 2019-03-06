@@ -55,7 +55,7 @@ For the first container, we will be creating a Dockerfile from scratch. For the 
 3. Once the above command is completed, validate that the image was created with command: `docker images`
 
    ```bash
-   sudo docker images
+   docker images
 
    REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
    rating-web               latest              259aa85bc386        31 minutes ago      212MB
@@ -147,7 +147,7 @@ docker network create --subnet=172.18.0.0/16 my-network
 1. Run api app container
 
     ```bash
-    sudo docker run -d --name api -e "MONGODB_URI=mongodb://172.18.0.10:27017/webratings" --net my-network --ip 172.18.0.11 -p 3000:3000 rating-api
+    docker run -d --name api -e "MONGODB_URI=mongodb://172.18.0.10:27017/webratings" --net my-network --ip 172.18.0.11 -p 3000:3000 rating-api
     ```
 
     > Note that environment variables are used here to direct the api app to mongo.
@@ -208,7 +208,7 @@ Now that we have container images for our application components, we need to sto
     ACR_USER=
     ACR_PWD=
 
-    sudo docker login --username $ACR_USER --password $ACR_PWD $ACR_SERVER
+    docker login --username $ACR_USER --password $ACR_PWD $ACR_SERVER
     ```
 
 ### Tag images with ACR server and repository
@@ -216,9 +216,9 @@ Now that we have container images for our application components, we need to sto
 ```bash
 # Be sure to replace the login server value
 
-sudo docker tag rating-db $ACR_SERVER/azureworkshop/rating-db:v1
-sudo docker tag rating-api $ACR_SERVER/azureworkshop/rating-api:v1
-sudo docker tag rating-web $ACR_SERVER/azureworkshop/rating-web:v1
+docker tag rating-db $ACR_SERVER/azureworkshop/rating-db:v1
+docker tag rating-api $ACR_SERVER/azureworkshop/rating-api:v1
+docker tag rating-web $ACR_SERVER/azureworkshop/rating-web:v1
 ```
 
 ### Push images to registry
