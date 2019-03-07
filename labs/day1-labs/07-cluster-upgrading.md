@@ -103,6 +103,10 @@ myakshyd     westus      myakshyd         1.12.4               Succeeded        
 
 ```
 
+After upgrading the cluster the pods are drained and restarted, so you will lose manual changes done to the pods:
+- Import data into MongoDB using script, explained [here](https://github.com/heoelri/container-bootcamp/blob/master/labs/day1-labs/04-deploy-app-aks.md#deploy-database-container-to-aks).
+- Set up Graphana, explained [here](https://github.com/heoelri/container-bootcamp/blob/master/labs/day1-labs/06-monitoring-k8s.md#setting-up-grafana)
+
 ## Attribution:
 Content originally created by @gabrtv et al. from [this](https://docs.microsoft.com/en-us/azure/aks/upgrade-cluster) Azure Doc
 
