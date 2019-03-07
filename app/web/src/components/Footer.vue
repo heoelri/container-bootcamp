@@ -14,7 +14,7 @@
       <div class="col-lg-6">
       </div>
       <div class="col-lg-12 credits">
-        Kubernetting in Bucharest is Cool...!!!
+        Kubernetting in Bucharest is Cool...!!! (but sometimes with errors)
       </div>
       <div class="col-lg-6">
       </div>
