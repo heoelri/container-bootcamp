@@ -8,7 +8,7 @@ There are two environments you will be working in for the exercises today.
 
     > Note: If you have bash or ssh available on your machine, it is easiest to access the jump box via SSH.
 
-2. **Azure Cloud Shell:** The Azure Cloud Shell will be accessed by logging into the Azure Portal (<http://portal.azure.com>).
+1. **Azure Cloud Shell:** The Azure Cloud Shell will be accessed by logging into the Azure Portal (<http://portal.azure.com>).
 
 ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Labs 1 and 2 require the Jumpbox.**
 
@@ -18,7 +18,7 @@ Once you have accessed the jumpbox, you must clone the workshop repo to the mach
 
 1. Start with a terminal on the jumpbox
   
-2. Clone the Github repo via the command line
+1. Clone the Github repo via the command line
 
     ```bash
     git clone https://github.com/heoelri/container-bootcamp.git
@@ -56,7 +56,7 @@ The API for the app is written in javascript, running on [Node.js](https://nodej
 
    **Leave the terminal session open as such and proceed to next step. A new session to the Jumpbox needs to be opened in parallel in the next step**
 
-2. Open a new terminal session on the jumpbox and test the API
+1. Open a new terminal session on the jumpbox and test the API
 
     use curl
 
@@ -71,7 +71,7 @@ The web frontend for the app is written in [Vue.js](https://vuejs.org/Vue "Vue.j
 1. Open a new terminal session on the jumpbox
 **This will most likely be a third terminal session that will be opened**
   
-2. Update dependencies and run app via node
+1. Update dependencies and run app via node
 
     ```bash
     cd ~/container-bootcamp/app/web
@@ -79,7 +79,7 @@ The web frontend for the app is written in [Vue.js](https://vuejs.org/Vue "Vue.j
     sudo npm install -f && npm run localmachine
     ```
 
-3. Test the web front-end
+1. Test the web front-end
 
     To test the web front-end via the internet you've to grab your ip address from the Azure Portal and enable access to port 8080.
 

@@ -125,7 +125,7 @@ The `output` parameter is used display the output as a table to increase readabi
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
 
-You should now have a Kubernetes cluster running with 2 nodes. You do not see the master servers for the cluster because these are managed by Microsoft. The Control Plane services which manage the Kubernetes cluster such as scheduling, API access, configuration data store and object controllers are all provided as services to the nodes. 
+You should now have a Kubernetes cluster running with 2 nodes. You do not see the master servers for the cluster because these are managed by Microsoft. The Control Plane services which manage the Kubernetes cluster such as scheduling, API access, configuration data store and object controllers are all provided as services to the nodes.
 
 In the Azure portal, you will see the AKS cluster present under the Resourcegroup that you have mentioned in the previous commands.
 
