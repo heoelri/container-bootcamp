@@ -59,8 +59,8 @@ kubectl get nodes
 You should see something like the following as output (there is one node in the cluster):
 ```console
 NAME                       STATUS    ROLES     AGE       VERSION
-aks-nodepool1-42552728-0   Ready     agent     4h        v1.12.4
-aks-nodepool1-42552728-1   Ready     agent     4h        v1.12.4
+aks-nodepool1-42552728-0   Ready     agent     4h        v1.12.6
+aks-nodepool1-42552728-1   Ready     agent     4h        v1.12.6
 ```
 
 2. Scale out AKS cluster to accommodate the demand
@@ -80,10 +80,10 @@ kubectl get nodes
 You should see something like the following as output (there are now 4 nodes in the cluster):
 ```console
 NAME                       STATUS    ROLES     AGE       VERSION
-aks-nodepool1-42552728-0   Ready     agent     5h        v1.12.4
-aks-nodepool1-42552728-1   Ready     agent     5h        v1.12.4
-aks-nodepool1-42552728-2   Ready     agent     7m        v1.12.4
-aks-nodepool1-42552728-3   Ready     agent     7m        v1.12.4
+aks-nodepool1-42552728-0   Ready     agent     5h        v1.12.6
+aks-nodepool1-42552728-1   Ready     agent     5h        v1.12.6
+aks-nodepool1-42552728-2   Ready     agent     7m        v1.12.6
+aks-nodepool1-42552728-3   Ready     agent     7m        v1.12.6
 ```
 
 4. Re-visit Grafana Dasboard to validate cluster scale is working.
