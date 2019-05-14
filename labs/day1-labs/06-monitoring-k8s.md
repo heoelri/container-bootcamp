@@ -160,4 +160,4 @@ Use the EXTERNAL-IP value from the previous step and put that into your browser:
 
 Explore the Grafana dashboard to see different performance and usage metrics of your AKS cluster.
 
-## [Return back to BootCamp Table of Contents (Main Page)](/README.md)
+#### [Return back to BootCamp Table of Contents (Main Page)](/README.md)
