@@ -15,7 +15,7 @@ For the purposes of this lab we will be focusing in on Prometheus and using Graf
 
 We are going to be installing Prometheus and Grafana into our K8s cluster using Helm and Tiller. You can think of Helm as a package manager for Kubernetes with Tiller being the server-side component.
 
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Proceed with below steps in Jumpbox**
+![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Proceed with below steps in Azure Cloud Shell**
 
 1. In the Azure Cloud Shell and in the Jumpbox, the Helm CLI is already installed.
 
@@ -116,7 +116,7 @@ Grafana is a dashboard visualization tool that can use all kinds of data sources
 Use the EXTERNAL-IP value from the previous step and put that into your browser:
     * eg. http://52.226.75.38, EXTERNAL-IP column from above. You should see something like the following come up, be patient it will take a moment or two:
 
-    ![grafana-default-new](img/8-grafana_default_new.png)
+   ![grafana-default-new](img/8-grafana_default_new.png)
 
 ## Setting up Grafana
 
