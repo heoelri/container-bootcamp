@@ -3,17 +3,21 @@ All the configuration information required to create the pods/containers for Sup
 
 In this exercise, we will create a "kubernetes secret" to access the private Azure Container Registry(ACR) that you have already setup. We will also update the respective yaml files with the ACR and secret information for AKS to download and use the db, web and api  images that you have uploaded to the ACR. 
 
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Perform these steps in the Jumpbox**
+![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Perform these steps in the AZURE CLOUD SHELL**
+
+
+## Clone Lab Github Repo
+As we have cloned our repo only to our jumpbox, you have to clone the workshop repo again from within the Cloud Chell.
+1. Open Azure Cloud Shell
+2. Clone the Github repo via the command line
+
+    ```bash
+    git clone https://github.com/heoelri/container-bootcamp.git
+    ```
 
 ## Connect to our previously created AKS Cluster
 
-1. Login to Azure 
-
-    ```azurecli-interactive
-    az login
-    ```
-
-2. Retrieve the list of AKS cluster
+1. Retrieve the list of AKS cluster
 
     ```bash
     az aks list --output table
@@ -25,7 +29,7 @@ In this exercise, we will create a "kubernetes secret" to access the private Azu
     akscluster1  westeurope  aks              1.11.9               Succeeded            akscluster1-75273d58.hcp.westeurope.azmk8s.io
     ```
 
-3. Retrieve AKS credentials
+2. Retrieve AKS credentials
 
     ```bash
     az aks get-credentials --name <name> --resource-group <resource group>
@@ -35,7 +39,7 @@ The prevoiusly used command (`az aks get-credential`) downloads the connection d
     
 ## Review/Edit the YAML Config Files
 
-1. In the Jumpbox edit `heroes-db.yaml` using `vi`
+1. In the Azure Cloud Shell edit `heroes-db.yaml` using `vi`
     ```bash
     cd ~/container-bootcamp/labs/helper-files
 
@@ -52,7 +56,7 @@ The prevoiusly used command (`az aks get-credential`) downloads the connection d
             name:  heroes-db-cntnr
         ```
 
-2. In the Jumpbox edit `heroes-web-api.yaml` using `vi`
+2. In the Azure Cloud Shell edit `heroes-web-api.yaml` using `vi`
     ```bash
     cd ~/container-bootcamp/labs/helper-files
 
