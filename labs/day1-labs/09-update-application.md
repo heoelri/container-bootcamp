@@ -6,10 +6,28 @@ In this lab, we will make a change to the web application and then re-deploy the
 
 ## Update web application code
 
-1. Start with a terminal on the **CentOS jumpbox**
-2. Navigate to `~/container-bootcamp/app/web/src/components/`
-3. Edit code for the `Footer.vue`
-4. Find the snippet below *(line 17)* and change the text _"Azure Global Blackbelt Team"_ to your name or whatever you would like to display.
+1. Start with a terminal on the **CentOS jumpbox** via SSH 
+2. Logon to your Azure Subscription
+
+    ```bash
+    az login
+    ```    
+3. Select the correct subscription
+    ```bash
+    az account list --output table
+    az account set --subscription <subscriptionid>
+    ```
+
+4. Connect to you AKS cluster
+
+    ```bash
+    az aks list --output table
+    az aks get-credentials --name <youraks> --resource-group <yourresourcegroup>
+    ```
+
+5. Navigate to `~/container-bootcamp/app/web/src/components/`
+6. Edit code for the `Footer.vue`
+7. Find the snippet below *(line 17)* and change the text _"Azure Global Blackbelt Team"_ to your name or whatever you would like to display.
 
     ```html
     <div class="row at-row flex-center flex-middle">
@@ -23,7 +41,7 @@ In this lab, we will make a change to the web application and then re-deploy the
     </div>
     ```
 
-5. Save your edits and close the file
+8. Save your edits and close the file
 
 ## Create new container image and push to ACR
 
