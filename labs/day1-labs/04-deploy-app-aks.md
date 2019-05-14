@@ -22,7 +22,7 @@ In this exercise, we will create a "kubernetes secret" to access the private Azu
     ```bash
     Name         Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
     -----------  ----------  ---------------  -------------------  -------------------  ---------------------------------------------
-    akscluster1  westeurope  aks              1.11.5               Succeeded            akscluster1-75273d58.hcp.westeurope.azmk8s.io
+    akscluster1  westeurope  aks              1.11.9               Succeeded            akscluster1-75273d58.hcp.westeurope.azmk8s.io
     ```
 
 3. Retrieve AKS credentials
