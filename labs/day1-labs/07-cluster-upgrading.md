@@ -33,12 +33,12 @@ We can use the `az aks upgrade` command to upgrade to the latest available versi
 
 **Note:** 
 #### Kubernetes may be unavailable during cluster upgrades. The upgrade may take 10 to 15 minutes.
-#### As of today, the remaining lab exercises are tested with version 1.12.* and some of them require at least 1.12.4. We recommend you to upgrade the cluster to version 1.12.4.
+#### As of today, the remaining lab exercises are tested with version 1.12.* and some of them require at least 1.12.6. We recommend you to upgrade the cluster to version 1.12.6.
 
 ### Upgrade the cluster
 
 ```azurecli-interactive
-az aks upgrade --name <CLUSTER_NAME> --resource-group <RESOURCE GROUP NAME> --kubernetes-version 1.12.4
+az aks upgrade --name <CLUSTER_NAME> --resource-group <RESOURCE GROUP NAME> --kubernetes-version 1.12.6
 ```
 
 **Output:**
@@ -62,7 +62,7 @@ az aks upgrade --name <CLUSTER_NAME> --resource-group <RESOURCE GROUP NAME> --ku
   "dnsPrefix": "myakshyd-myakshyd-xxxx",
   "fqdn": "myakshyd-myakshyd-xxxxxa.hcp.westus.azmk8s.io",
   "id": "/subscriptions/xxxxxxxxxxx/resourcegroups/myakshyd/providers/Microsoft.ContainerService/ma                                                                 nagedClusters/myakshyd",
-  "kubernetesVersion": "1.12.4",
+  "kubernetesVersion": "1.12.6",
   "linuxProfile": {
     "adminUsername": "azureuser",
     "ssh": {
@@ -99,7 +99,7 @@ Output:
 ```json
 Name         Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 -----------  ----------  ---------------  -------------------  -------------------  -----------------------------------------------------------
-myakshyd     westus      myakshyd         1.12.4               Succeeded            myakshyd-myakshyd-xxxxx.hcp.eastus.azmk8s.io
+myakshyd     westus      myakshyd         1.12.6               Succeeded            myakshyd-myakshyd-xxxxx.hcp.eastus.azmk8s.io
 
 ```
 
