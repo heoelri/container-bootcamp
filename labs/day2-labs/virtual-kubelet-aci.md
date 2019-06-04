@@ -276,6 +276,12 @@ spec:
   nodeName: virtual-kubelet-east
   ```
 
+Before applying the yaml file be sure that the *nodeName* parameter corresponds to the node name of the east virtual kubelet created above:
+
+  ```console
+  kubectl get nodes
+  ```
+
   ```console
   cd ~
   cd container-bootcamp/labs/helper-files
@@ -331,6 +337,12 @@ spec:
   nodeName: virtual-kubelet-west
 ```
 
+Before applying the yaml file be sure that the *nodeName* parameter corresponds to the node name of the west virtual kubelet created above:
+
+  ```console
+  kubectl get nodes
+  ```
+  
 ```console
 kubectl apply -f west-aci-heroes.yaml
 ```
